@@ -16,7 +16,7 @@ import jakarta.validation.constraints.Positive;
 @Table(name = "tb_produtos")
 public class Produto {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "nome", length = 50, nullable = false)
