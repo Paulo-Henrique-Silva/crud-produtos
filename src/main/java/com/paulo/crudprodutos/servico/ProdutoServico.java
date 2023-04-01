@@ -17,4 +17,8 @@ public class ProdutoServico {
     public List<Produto> obterProdutos() {
         return produtoRepositorio.findAll();
     }
+
+    public Produto adicionar(Produto produto) {
+        return produtoRepositorio.save(produto);
+    }
 }
