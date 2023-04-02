@@ -19,8 +19,8 @@
         </nav>
         
         <!--Seção de adicionar-->
-        <div class="container-md-fluid d-flex justify-content-center align-items-center m-4">
-            <div class="row w-100">
+        <div class="container-md-fluid m-4">
+            <div class="row w-100 d-flex justify-content-center align-items-center">
                 <div class="col-12 text-center mb-2">
                     <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modalAdicionar">Adicionar</button>
                 </div>
@@ -38,14 +38,13 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <input type="hidden" name="id" value="0">
                             <div class="mb-3">
                                 <label for="iptNome" class="form-label">Nome</label>
                                 <input type="text" required maxlength="50" class="form-control" id="iptNome" name="nome">
                             </div>
                             <div class="mb-3">
                                 <label for="iptDescricao" class="form-label">Descrição</label>
-                                <textarea type="text" maxlength="200" class="form-control" id="iptDescricao" name="descricao"></textarea>
+                                <textarea type="text" maxlength="200" class="form-control" rows="3" id="iptDescricao" name="descricao"></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="iptPreco" class="form-label">Preço</label>
@@ -53,7 +52,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="cbxCategoria" class="form-label">Categoria</label>
-                                <select class="form-select" name="categoria">
+                                <select class="form-select" name="categoria" id="cbxCategoria">
                                     <!--Cria opções de categoria conforme o enum-->
                                     <option th:each="categoria : ${categorias}" th:text="${categoria}"></option>
                                 </select>
@@ -94,7 +93,7 @@
                                 <td scope="row" th:text="${produto.categoria}"></td>
                                 <td scope="row">
                                     <div class="d-flex justify-content-around">
-                                        <button class="btn btn-outline-primary btn-sm">Editar</button>
+                                        <a class="btn btn-outline-primary btn-sm" th:href="'/produtos/editar/' + ${produto.id}">Editar</a>
                                         <button class="btn btn-outline-danger btn-sm">Excluir</button>
                                     </div>
                                 </td>

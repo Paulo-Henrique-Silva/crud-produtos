@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,7 +25,7 @@ public class ProdutoControlador {
 
     @GetMapping("")
     public ModelAndView verLista() {
-        List<Produto> produtos = produtoServico.obterProdutos();
+        List<Produto> produtos = produtoServico.obterTodos();
         Categoria[] categorias = Categoria.values();
 
         ModelAndView listaModelAndView = new ModelAndView("lista");
@@ -40,6 +41,18 @@ public class ProdutoControlador {
 
         produtoServico.adicionar(produto);
 
-        return "redirect:/produtos";
+        return "redirect:/produtos"; //"chama" o método get de produtos
+    }
+
+    @GetMapping("/editar/{id}")
+    public ModelAndView verAdicionarProduto(@PathVariable Long id) {
+        Categoria[] categorias = Categoria.values();
+        Produto produto = produtoServico.obterPorId(id).get();
+
+        ModelAndView adicionarModelAndView = new ModelAndView("editar_produto");
+        adicionarModelAndView.addObject("categorias", categorias);
+        adicionarModelAndView.addObject("produto", produto);
+
+        return adicionarModelAndView;
     }
 }
