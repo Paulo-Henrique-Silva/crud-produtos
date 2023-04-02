@@ -36,16 +36,14 @@ public class ProdutoControlador {
     }
 
     @PostMapping("") 
-    public String adicionar(@Valid Produto produto) {
-        produto.setCategoria(Categoria.Alimento);
-
+    public String adicionarProduto(@Valid Produto produto) {
         produtoServico.adicionar(produto);
 
         return "redirect:/produtos"; //"chama" o método get de produtos
     }
 
     @GetMapping("/editar/{id}")
-    public ModelAndView verAdicionarProduto(@PathVariable Long id) {
+    public ModelAndView verEditarProduto(@PathVariable Long id) {
         Categoria[] categorias = Categoria.values();
         Produto produto = produtoServico.obterPorId(id).get();
 
@@ -54,5 +52,12 @@ public class ProdutoControlador {
         adicionarModelAndView.addObject("produto", produto);
 
         return adicionarModelAndView;
+    }
+
+    @PostMapping("/editar/{id}")
+    public String editarProduto(Produto produto) {
+        produtoServico.editar(produto);
+
+        return "redirect:/produtos";
     }
 }

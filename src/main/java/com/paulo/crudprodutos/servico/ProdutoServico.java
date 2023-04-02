@@ -18,12 +18,16 @@ public class ProdutoServico {
     public List<Produto> obterTodos() {
         return produtoRepositorio.findAll();
     }
+    
+    public Optional<Produto> obterPorId(Long id) {
+        return produtoRepositorio.findById(id);
+    }
 
     public Produto adicionar(Produto produto) {
         return produtoRepositorio.save(produto);
     }
 
-    public Optional<Produto> obterPorId(Long id) {
-        return produtoRepositorio.findById(id);
+    public Produto editar(Produto produto) {
+        return produtoRepositorio.save(produto);
     }
 }
