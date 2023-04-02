@@ -30,4 +30,8 @@ public class ProdutoServico {
     public Produto editar(Produto produto) {
         return produtoRepositorio.save(produto);
     }
+
+    public void excluirPorId(Long id) {
+        produtoRepositorio.deleteById(id);
+    }
 }

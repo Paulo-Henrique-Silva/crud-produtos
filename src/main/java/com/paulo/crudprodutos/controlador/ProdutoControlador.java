@@ -60,4 +60,11 @@ public class ProdutoControlador {
 
         return "redirect:/produtos";
     }
+
+    @GetMapping("/excluir/{id}")
+    public String excluirProduto(@PathVariable Long id) {
+        produtoServico.excluirPorId(id);
+
+        return "redirect:/produtos";
+    }
 }

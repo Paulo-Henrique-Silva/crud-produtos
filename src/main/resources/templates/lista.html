@@ -94,7 +94,7 @@
                                 <td scope="row">
                                     <div class="d-flex justify-content-around">
                                         <a class="btn btn-outline-primary btn-sm" th:href="'/produtos/editar/' + ${produto.id}">Editar</a>
-                                        <button class="btn btn-outline-danger btn-sm">Excluir</button>
+                                        <a class="btn btn-outline-danger btn-sm" th:href="'/produtos/excluir/' + ${produto.id}" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
                                     </div>
                                 </td>
                             </tr>
